@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" th:insert="~{base :: parent(~{:: #content})}" xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+    <div id="content">
+        <div class="grid grid-cols-12 ">
+            <div class="col-span-3"></div>
+            <div class="col-span-6">
+                <div href="#" 
+                  class="block  p-6 border-t-green-800 border-t-[10px] bg-white  border-gray-400 rounded-lg shadow
+                 hover:bg-gray-100 dark:bg-gray-800 dark:border-green-700 dark:hover:bg-gray-700">
+                 
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                       Login Here
+                    </h5>
+                    <div class="text-red-600" th:if="${param.error}">
+                        Invalid username and password.</div>
+                    <div class="text-green-600" th:if="${param.logout}">
+                        You have been logged out.</div>
+
+                    <!--this is the form-->
+                    <form 
+                      method="post"
+                      data-th-action="@{'/authenticate'}"
+                       class="mt-5" novalidate>
+                        
+                          <div class="mb-5">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                            <input name ="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+                          </div>
+
+                          <div class="mb-5">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <input name ="password" type="password" id="Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter password here" required />
+                          </div>
+                          
+                          <div class="mb-3 flex justify-center space-x-3">
+                          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+                           focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600
+                            dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+
+                            <button type="reset" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none
+                           focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600
+                            dark:hover:bg-green-700 dark:focus:ring-blue-800">Reset</button>
+                        </div>
+                      </form>
+
+                      <div class="social-buttons-container flex flex-col items-center my-4">
+                        <h1 class="text-gray-500 text-lg font-semibold mb-4">
+                          --------------------  OR  --------------------</h1>
+
+                        <!-- Google Login Button -->
+                        <a href="/oauth2/authorization/google"
+                           class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out">
+                          <svg class="w-5 h-5 mr-2" viewBox="0 0 48 48">
+                            <path fill="#4285F4" d="M24 9.5c3.3 0 6.2 1.1 8.4 3.1l6.2-6.2C34.4 3 29.5 1 24 1 14.6 1 6.7 6.7 3 14.9l7.5 5.8C12.7 13.6 17.9 9.5 24 9.5z"/>
+                            <path fill="#34A853" d="M46.1 24.3c0-1.3-.1-2.5-.4-3.7H24v7.1h12.6c-.5 2.7-2 5-4.2 6.6v5.4h6.7c4-3.7 6.3-9.1 6.3-15.4z"/>
+                            <path fill="#FBBC05" d="M10.5 28.4c-1-3.1-1-6.4 0-9.5l-7.5-5.8c-2.9 5.7-2.9 12.5 0 18.2l7.5-5.8z"/>
+                            <path fill="#EA4335" d="M24 47c5.5 0 10.4-1.9 14.2-5.1l-6.7-5.4c-2 1.3-4.5 2.1-7.4 2.1-6.1 0-11.3-4.1-13.1-9.7l-7.5 5.8C6.7 41.3 14.6 47 24 47z"/>
+                          </svg>
+                          Login with Google
+                        </a>
+
+                        <!-- GitHub Login Button -->
+                        <a href="/oauth2/authorization/github"
+                           class="bg-gray-400 hover:bg-gray-900 text-white font-bold py-2 px-4 mt-4 rounded inline-flex items-center transition duration-300 ease-in-out">
+                          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12 .297C5.375.297 0 5.67 0 12.297c0 5.29 3.438 9.774 8.207 11.387.6.11.793-.256.793-.572v-2.02c-3.338.727-4.033-1.416-4.033-1.416-.546-1.38-1.333-1.75-1.333-1.75-1.089-.744.083-.729.083-.729 1.203.084 1.834 1.236 1.834 1.236 1.07 1.832 2.809 1.303 3.495.996.109-.775.418-1.304.76-1.603-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.38 1.236-3.22-.125-.306-.536-1.532.117-3.193 0 0 1.008-.322 3.301 1.226a11.48 11.48 0 0 1 3.006-.404c1.02.005 2.046.137 3.006.404 2.293-1.548 3.301-1.226 3.301-1.226.653 1.661.242 2.887.118 3.193.77.84 1.236 1.91 1.236 3.22 0 4.609-2.804 5.624-5.475 5.921.43.371.812 1.104.812 2.226v3.293c0 .317.193.687.8.57C20.565 22.07 24 17.586 24 12.297 24 5.67 18.627.297 12 .297z"/>
+                          </svg>
+                          Login with GitHub
+                        </a>
+
+                      </div>
+                      
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

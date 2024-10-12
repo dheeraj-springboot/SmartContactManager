@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .message-box {
+            background-color: #f0f8ff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-box">
+        <h2>Success!</h2>
+        <p>Your operation was completed successfully.</p>
+        <button id="okButton">OK</button>
+    </div>
+
+    <script>
+        // JavaScript to handle the button click
+        document.getElementById('okButton').addEventListener('click', function() {
+            // Redirect to another URL after clicking the OK button
+            window.location.href = "http://localhost:8081/register"; // replace with the URL you want
+        });
+    </script>
+
+</body>
+</html>
